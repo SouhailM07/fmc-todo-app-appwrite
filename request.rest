@@ -1,0 +1,14 @@
+GET http://localhost:3000/api/notes
+###
+POST http://localhost:3000/api/notes
+content-type: application/json
+
+{
+    "note":"need more notes"
+}
+
+###
+PUT http://localhost:3000/api/notes?id=65c3feab63db82c537d0edee
+
+###
+DELETE http://localhost:3000/api/notes?id=65c3fea163db82c537d0edea

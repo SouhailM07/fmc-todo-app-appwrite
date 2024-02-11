@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.note:hover .deleteBtn {
+  @apply block;
+}
+/* "very-light-gray": "#fafafa",
+        "very-light-grayish-blue": "#d9e3ef",
+        "light-grayish-blue": "#c3d4e3",
+        "dark-grayish-blue": "#7d98b2",
+        "very-dark-grayish-blue": "#3c4f63", */
