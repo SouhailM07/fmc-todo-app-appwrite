@@ -5,7 +5,10 @@ import { ControlPanel, NotesContainer } from "@/components";
 export default function MyContainer() {
   return (
     <>
-      <main className="min-h-screen flex justify-center items-center">
+      <main
+        id="Todo_home"
+        className="min-h-screen flex justify-center items-center"
+      >
         <div className="min-w-[25rem] space-y-[1.5rem]">
           <ControlPanel />
           <NotesContainer />

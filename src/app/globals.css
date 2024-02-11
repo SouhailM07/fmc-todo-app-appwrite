@@ -9,7 +9,7 @@
 "dark-theme-dark-grayish-blue": "#596c7d",
 "dark-theme-very-dark-grayish-blue": "#283d50",
 "dark-theme-very-dark-grayish-blue-hover": "#222d38", */
-body {
+#Todo_home {
   @apply bg-very-light-grayish-blue dark:bg-very-dark-blue bg-[url("/bg-desktop-light.jpg")] dark:bg-[url("/bg-desktop-dark.jpg")]  bg-[center_0rem] bg-[length:100%_auto] bg-no-repeat;
 }
 @layer base {

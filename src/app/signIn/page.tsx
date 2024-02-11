@@ -3,11 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // appwrite
-import { userLogin } from "@/lib/api";
-// hooks
-import { useLayoutEffect } from "react";
-// ! appwrite
-import { account } from "@/appwrite";
+import { createNewUser } from "@/lib/api";
 // ? types
 import { inputs } from "@/types";
 // form
@@ -28,6 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
+  name: z.string().min(3, { message: "enter your name" }),
   email: z.string().email({
     message: "Invalid Email",
   }),
@@ -36,33 +33,17 @@ const formSchema = z.object({
   }),
 });
 
-export default function Home() {
-  let router = useRouter();
-  useLayoutEffect(() => {
-    let userInfo = account
-      .get()
-      .then((res) => {
-        router.push("/home");
-        return res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(userInfo);
-  }, []);
+export default function SignIn_page() {
   return (
     <>
       <main
-        id="Login_page"
+        id="SignIn_page"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="max-w-[28rem] space-y-[2rem]">
-          <h1 className="text-center text-[1.8rem]">
-            Welcome to Online Todo app from
-            <span className="font-bold"> Front end mentor</span>
-          </h1>
+        <div className="min-w-[26rem] space-y-[2rem]">
+          <h1 className="text-center text-[1.8rem]">Sign In</h1>
           <section className="w-[80%] mx-auto">
-            <Login />
+            <SignIn />
           </section>
         </div>
       </main>
@@ -70,8 +51,9 @@ export default function Home() {
   );
 }
 
-const Login = () => {
+const SignIn = () => {
   // Defining form
+  let { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     //! default values
@@ -82,27 +64,31 @@ const Login = () => {
 
   // Defining submit function
   let router = useRouter();
-  let { toast } = useToast();
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // console.log(values);
-    await userLogin(values).then((res) => {
-      if (res == "user does not exist") {
+    // start
+    await createNewUser(values).then((check) => {
+      if (check == "user exist") {
         toast({
           variant: "destructive",
-          description: "User does not exit !",
+          description: "User is already exist !",
         });
-      } else if (res == "access") {
-        router.push("/home");
       } else {
+        router.push("/home");
         toast({
-          variant: "destructive",
-          description: "Wrong password",
+          title: "congratulation",
+          description: "Your Account was created successfully",
         });
       }
     });
   };
   // Defining inputs
   const inputs: inputs[] = [
+    {
+      name: "name",
+      label: "Name",
+      placeholder: "username...",
+      inputType: "string",
+    },
     {
       name: "email",
       label: "Email",
@@ -130,7 +116,11 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>{e.label}</FormLabel>
                     <FormControl>
-                      <Input placeholder={e.placeholder} {...field} />
+                      <Input
+                        type={e.inputType}
+                        placeholder={e.placeholder}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -139,9 +129,14 @@ const Login = () => {
             );
           })}
           <div className="flex justify-between items-center">
-            <Button type="submit">Submit</Button>
-            <Link href="/signIn" className="underline hover:text-violet-700">
-              Sign in
+            <Button
+              type="submit"
+              className="bg-gradient-to-tr from-bright-blue to-check-background-start hover:from-pink-500 hover:to-yellow-500"
+            >
+              Submit
+            </Button>
+            <Link href="/" className="underline hover:text-violet-700">
+              Login
             </Link>
           </div>
         </form>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import ModeContextProvider from "./contextApi/ModeContextProvider";
+import { Toaster } from "@/components/ui/toaster";
+
 // Josefin Sans
 import "./globals.css";
 
@@ -20,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={usedFont.className}>
         <ModeContextProvider>{children}</ModeContextProvider>
+        <Toaster />
       </body>
     </html>
   );
