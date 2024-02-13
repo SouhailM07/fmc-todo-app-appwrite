@@ -51,7 +51,7 @@ export default function Home() {
         // ! it will toggle the login component when the user is not logged In
         setShowLogin(true);
       });
-    console.log(userInfo);
+    // console.log(userInfo);
   }, []);
   return (
     <>

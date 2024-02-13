@@ -23,7 +23,7 @@ export default function Todo_home() {
         });
     };
     checkLogin();
-    console.log("check render from home");
+    // console.log("check render from home");
   }, []);
   return (
     <>
