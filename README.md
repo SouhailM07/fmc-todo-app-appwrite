@@ -4,9 +4,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### env vars:
 NEXT_PUBLIC_ENDPOINT_URL
+
 NEXT_PUBLIC_PROJECT_ID
+
 NEXT_PUBLIC_DATABASE_ID
+
 NEXT_PUBLIC_USERS_COLLECTION_ID
+
 NEXT_PUBLIC_NOTES_COLLECTION_ID
 
 
