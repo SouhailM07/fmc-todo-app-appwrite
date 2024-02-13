@@ -4,3 +4,4 @@ export { default as NotesContainer } from "./NotesContainer/NotesContainer";
 export { default as MyInput } from "./Input/Input";
 export { default as InfoPanel } from "./InfoPanel/InfoPanel";
 export { default as SwitchModeBtn } from "./SwitchModeBtn/SwitchModeBtn";
+export { default as Note } from "./Note/Note";

@@ -1,16 +1,12 @@
 "use client";
 import "./infopanel.css";
-import useSWR from "swr";
-import axios from "axios";
-
+import myStore from "@/zustand/noteStore";
 export default function InfoPanel() {
-  // @ts-ignore
-  let fetcher = (...args) => axios.get(...args);
-  let { data } = useSWR("/api/notes", fetcher);
+  let myNotes = myStore((state: any) => state.notes);
   return (
     <>
       <section className="flex  py-[0.6rem] justify-between px-[1rem] text-[0.7rem]">
-        <p>{data?.data.notes.filter((e) => !e.done).length} items left</p>
+        <p>{myNotes?.filter((e) => !e.done).length} items left</p>
         <ul className="flex space-x-[1rem]">
           <li>All</li>
           <li>Active</li>

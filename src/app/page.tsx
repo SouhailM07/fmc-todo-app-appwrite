@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 // appwrite
 import { userLogin } from "@/lib/api";
 // hooks
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 // ! appwrite
 import { account } from "@/appwrite";
 // ? types
@@ -38,6 +38,7 @@ const formSchema = z.object({
 
 export default function Home() {
   let router = useRouter();
+  let [showLogin, setShowLogin] = useState<boolean>(false);
   useLayoutEffect(() => {
     let userInfo = account
       .get()
@@ -47,25 +48,33 @@ export default function Home() {
       })
       .catch((err) => {
         console.log(err);
+        // ! it will toggle the login component when the user is not logged In
+        setShowLogin(true);
       });
     console.log(userInfo);
   }, []);
   return (
     <>
-      <main
-        id="Login_page"
-        className="flex justify-center items-center min-h-screen"
-      >
-        <div className="max-w-[28rem] space-y-[2rem]">
-          <h1 className="text-center text-[1.8rem]">
-            Welcome to Online Todo app from
-            <span className="font-bold"> Front end mentor</span>
-          </h1>
-          <section className="w-[80%] mx-auto">
-            <Login />
-          </section>
-        </div>
-      </main>
+      {showLogin ? (
+        <main
+          id="Login_page"
+          className="flex justify-center items-center min-h-screen"
+        >
+          <div className="max-w-[28rem] space-y-[2rem]">
+            <h1 className="text-center text-[1.8rem]">
+              Welcome to Online Todo app from
+              <span className="font-bold"> Front end mentor</span>
+            </h1>
+            <section className="w-[80%] mx-auto">
+              <Login />
+            </section>
+          </div>
+        </main>
+      ) : (
+        <main className="min-h-screen grid place-items-center">
+          <p>checking</p>
+        </main>
+      )}
     </>
   );
 }
@@ -130,7 +139,11 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>{e.label}</FormLabel>
                     <FormControl>
-                      <Input placeholder={e.placeholder} {...field} />
+                      <Input
+                        type={e.inputType}
+                        placeholder={e.placeholder}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

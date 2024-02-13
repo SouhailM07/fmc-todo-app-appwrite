@@ -29,6 +29,8 @@ export async function createNewUser(user: any) {
       user.password,
       user.name
     );
+    // ! create session
+    await account.createEmailSession(user.email, user.password);
     // todo[ guard ]
     console.log(newAccount);
   }
@@ -55,4 +57,8 @@ export async function userLogin(user) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function logout() {
+  await account.deleteSession("current");
 }
