@@ -92,8 +92,8 @@ const Login = () => {
   let handleGoogle = async () => {
     await account.createOAuth2Session(
       "google",
-      "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app/home",
-      "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app"
+      "https://fmc-todo-app-appwrite.vercel.app/home",
+      "https://fmc-todo-app-appwrite.vercel.app"
     );
   };
 
