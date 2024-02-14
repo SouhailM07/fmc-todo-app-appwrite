@@ -92,7 +92,7 @@ const Login = () => {
   let handleGoogle = async () => {
     await account.createOAuth2Session(
       "google",
-      "https://cloud.appwrite.io/v1/account/sessions/oauth2/callback/google/65c90c5e276c821d3819",
+      "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app/home",
       "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app"
     );
   };
