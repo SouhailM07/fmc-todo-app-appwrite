@@ -89,8 +89,18 @@ const Login = () => {
     },
   });
 
-  let handleGoogle = async () => {
-    await account.createOAuth2Session("google", "/home", "/");
+  let handleGoogle = () => {
+    try {
+      // Replace the URL hosts with the provided hosts
+      account.createOAuth2Session(
+        "google",
+        "https://fmc-todo-app-appwrite.vercel.app/home",
+        "https://fmc-todo-app-appwrite.vercel.app"
+      );
+    } catch (error) {
+      console.error("Error creating OAuth2 session:", error);
+      // Handle error if necessary
+    }
   };
 
   // Defining submit function
