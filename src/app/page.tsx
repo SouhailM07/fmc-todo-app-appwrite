@@ -90,7 +90,7 @@ const Login = () => {
   });
 
   let handleGoogle = async () => {
-    await account.createOAuth2Session("google", "/home", "");
+    await account.createOAuth2Session("google", "/home", "/");
   };
 
   // Defining submit function
