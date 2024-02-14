@@ -94,8 +94,8 @@ const Login = () => {
       // Replace the URL hosts with the provided hosts
       account.createOAuth2Session(
         "google",
-        "https://fmc-todo-app-appwrite.vercel.app/home",
-        "https://fmc-todo-app-appwrite.vercel.app"
+        "*.vercel.app/home",
+        "*.vercel.app"
       );
     } catch (error) {
       console.error("Error creating OAuth2 session:", error);
