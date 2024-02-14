@@ -90,11 +90,7 @@ const Login = () => {
   });
 
   let handleGoogle = async () => {
-    await account.createOAuth2Session(
-      "google",
-      "https://fmc-todo-app-appwrite.vercel.app/home",
-      "https://fmc-todo-app-appwrite.vercel.app"
-    );
+    await account.createOAuth2Session("google");
   };
 
   // Defining submit function
