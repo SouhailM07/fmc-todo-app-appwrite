@@ -94,7 +94,9 @@ const Login = () => {
       // Replace the URL hosts with the provided hosts
       account.createOAuth2Session(
         "google",
+        // @ts-ignore
         ["fmc-todo-app-appwrite.vercel.app/home"],
+        // @ts-ignore
         ["fmc-todo-app-appwrite.vercel.app"]
       );
     } catch (error) {
