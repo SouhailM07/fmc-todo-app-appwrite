@@ -93,7 +93,7 @@ const Login = () => {
     await account.createOAuth2Session(
       "google",
       "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app/home",
-      "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app/"
+      "https://fmc-todo-app-appwrite-git-main-shadows-projects-11e07701.vercel.app"
     );
   };
 
@@ -161,13 +161,13 @@ const Login = () => {
           })}
           <div className="flex justify-between items-center">
             <Button type="submit">Login</Button>
-            <Button onClick={handleGoogle}>Google</Button>
             <Link href="/signIn" className="underline hover:text-violet-700">
               Sign in
             </Link>
           </div>
         </form>
       </Form>
+      <Button onClick={handleGoogle}>Google</Button>
     </>
   );
 };
