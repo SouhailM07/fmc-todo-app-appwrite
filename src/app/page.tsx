@@ -94,7 +94,7 @@ const Login = () => {
       // Replace the URL hosts with the provided hosts
       account.createOAuth2Session(
         "google",
-        "*.vercel.app/home",
+        "*.vercel.app",
         "*.vercel.app"
       );
     } catch (error) {
